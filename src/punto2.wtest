@@ -1,5 +1,31 @@
 import empleados.*
 
+test "si baigorria vende 2 empanadas cobra 30 y se resetea" {
+	baigorria.vender(2)
+	
+	assert.equals(30, baigorria.sueldo())
+	gimenez.pagarSueldo(baigorria)
+	assert.equals(30, baigorria.totalCobrado())
+	assert.equals(0, baigorria.cantidadEmpanadasVendidas())
+	
+}
+
+test "gimenez le paga a baigorria 30 y resta 30 del fondo" {
+	baigorria.vender(2)
+	assert.equals(30, baigorria.sueldo())
+	gimenez.pagarSueldo(baigorria)
+	assert.equals(30, baigorria.totalCobrado())
+	assert.equals(299970, gimenez.fondo())
+}
+
+test "gimenez le paga a galvan y resta el suldo de galvan del fondo" {
+	assert.equals(15000, galvan.sueldo())
+	gimenez.pagarSueldo(galvan)
+	assert.equals(285000, gimenez.fondo())
+}
+
+/* 
+
 test "Qué hacen los empleados con lo que cobran" {
 	
   baigorria.vender(500)
@@ -14,3 +40,5 @@ test "Qué hacen los empleados con lo que cobran" {
   
  	
 }
+
+*/

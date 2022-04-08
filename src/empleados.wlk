@@ -1,6 +1,19 @@
 object galvan {
 
 	var property sueldo = 15000
+	var dinero = 0
+
+	method cobrar() {
+		dinero += sueldo
+	}
+
+	method deuda() = if (dinero < 0) dinero * (-1) else 0
+
+	method dinero() = if (dinero > 0) dinero else 0
+
+	method gastar(monto) {
+		dinero -= monto
+	}
 
 }
 
@@ -22,6 +35,7 @@ object baigorria {
 		totalCobrado += self.sueldo()
 		cantidadEmpanadasVendidas = 0
 	}
+
 }
 
 object gimenez {
@@ -30,6 +44,7 @@ object gimenez {
 
 	method pagarSueldo(empleado) {
 		fondo -= empleado.sueldo()
+		empleado.cobrar()
 	}
 
 	method fondo() = fondo
