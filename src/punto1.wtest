@@ -1,5 +1,24 @@
 import empleados.*
 
+test "baigorria vende 2 empanadas y cobra 30 pesos" {
+	baigorria.cantidadEmpanadasVendidas(2)
+	
+	assert.equals(30, baigorria.sueldo())
+}
+
+test "gimenez le paga el sueldo a sus empleados" {
+	baigorria.cantidadEmpanadasVendidas(2)
+	gimenez.pagarSueldo(galvan)
+	gimenez.pagarSueldo(baigorria)
+	
+	assert.equals(284970, gimenez.fondo())
+}
+
+
+
+
+/* 
+
 test "punto1: Planteo inicial" {
 
   baigorria.vender(500)
@@ -14,3 +33,4 @@ test "punto1: Planteo inicial" {
   
 }
 
+*/
